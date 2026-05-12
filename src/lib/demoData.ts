@@ -5,6 +5,7 @@ import type {
   Report,
   Training,
   GuardianNotice,
+  NearMiss,
 } from '@/types'
 
 export const DEMO_CATEGORIES: SafetyCategory[] = [
@@ -201,6 +202,54 @@ export const DEMO_TRAININGS: Training[] = [
     instructor: '鈴木 一郎（安全担当）',
     content: 'ハイムリック法・背部叩打法の実演と確認',
     created_at: new Date().toISOString(),
+  },
+]
+
+export const DEMO_NEAR_MISSES: NearMiss[] = [
+  {
+    id: 'nm1',
+    facility_id: 'fac1',
+    occurred_at: new Date(Date.now() - 5 * 86400000).toISOString().split('T')[0],
+    scene: 'outdoor',
+    what_happened: '園庭で走っていた3歳児が砂場の縁につまずき、転倒しそうになった。近くにいた保育士がすぐに支えたため怪我はなかった。',
+    why_it_happened: '砂場の縁のコンクリートが少し突き出ていた。子どもが走りながら見ていなかった。',
+    what_to_change: '砂場縁の突起部分を補修する。走り回る際は「歩いてね」の声かけを徹底する。',
+    shared_with: '全職員（朝礼にて）',
+    recheck_date: new Date(Date.now() + 25 * 86400000).toISOString().split('T')[0],
+    step: 'shared',
+    created_by: '田中 花子',
+    created_at: new Date(Date.now() - 5 * 86400000).toISOString(),
+    updated_at: new Date(Date.now() - 2 * 86400000).toISOString(),
+  },
+  {
+    id: 'nm2',
+    facility_id: 'fac1',
+    occurred_at: new Date(Date.now() - 12 * 86400000).toISOString().split('T')[0],
+    scene: 'eating',
+    what_happened: '昼食時、アレルギー児のトレーに誤って通常食を置きかけた。配膳担当者が気づき、提供前に確認して未然に防いだ。',
+    why_it_happened: '配膳担当が普段と異なる職員だった。アレルギー児のトレーに色別マークが貼られていなかった。',
+    what_to_change: 'アレルギー児のトレーに赤いシールを貼る。配膳前の声出し確認ルールを明文化する。',
+    shared_with: null,
+    recheck_date: null,
+    step: 'action',
+    created_by: '鈴木 一郎',
+    created_at: new Date(Date.now() - 12 * 86400000).toISOString(),
+    updated_at: new Date(Date.now() - 10 * 86400000).toISOString(),
+  },
+  {
+    id: 'nm3',
+    facility_id: 'fac1',
+    occurred_at: new Date(Date.now() - 20 * 86400000).toISOString().split('T')[0],
+    scene: 'nap',
+    what_happened: '午睡中、2歳児がうつぶせになっているのを巡回で発見。すぐに仰向けに直した。',
+    why_it_happened: null,
+    what_to_change: null,
+    shared_with: null,
+    recheck_date: null,
+    step: 'occurred',
+    created_by: '山本 さくら',
+    created_at: new Date(Date.now() - 20 * 86400000).toISOString(),
+    updated_at: new Date(Date.now() - 20 * 86400000).toISOString(),
   },
 ]
 

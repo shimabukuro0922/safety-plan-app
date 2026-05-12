@@ -16,6 +16,7 @@ const RecordList = React.lazy(() => import('@/pages/records/RecordList'))
 const StaffMaterial = React.lazy(() => import('@/pages/materials/StaffMaterial'))
 const GuardianNotice = React.lazy(() => import('@/pages/materials/GuardianNotice'))
 const Settings = React.lazy(() => import('@/pages/settings/Settings'))
+const NearMiss = React.lazy(() => import('@/pages/near-miss/NearMiss'))
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 1, staleTime: 1000 * 60 * 5 } },
@@ -39,6 +40,7 @@ function App() {
               <Route path="/reports" element={<ReportList />} />
               <Route path="/reports/new" element={<ReportCreate />} />
               <Route path="/reports/:id" element={<ReportEditPage />} />
+              <Route path="/near-miss" element={<NearMiss />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="*" element={<Navigate to="/dashboard" replace />} />
             </Routes>

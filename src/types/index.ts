@@ -173,6 +173,50 @@ export interface GuardianNotice {
 }
 
 // ==============================
+// ヒヤリハット
+// ==============================
+export type NearMissScene =
+  | 'nap' | 'eating' | 'water_play' | 'outdoor' | 'excursion'
+  | 'bus' | 'facility' | 'other'
+
+export type NearMissStep = 'occurred' | 'cause' | 'action' | 'shared' | 'recheck'
+
+export interface NearMiss {
+  id: string
+  facility_id: string
+  occurred_at: string
+  scene: NearMissScene
+  what_happened: string
+  why_it_happened: string | null
+  what_to_change: string | null
+  shared_with: string | null
+  recheck_date: string | null
+  step: NearMissStep
+  created_by: string
+  created_at: string
+  updated_at: string
+}
+
+export const NEAR_MISS_SCENE_LABELS: Record<NearMissScene, string> = {
+  nap: '午睡',
+  eating: '食事',
+  water_play: '水遊び・プール',
+  outdoor: '園庭・外遊び',
+  excursion: '園外活動・散歩',
+  bus: 'バス送迎',
+  facility: '施設・設備',
+  other: 'その他',
+}
+
+export const NEAR_MISS_STEP_CONFIG: Record<NearMissStep, { label: string; color: string; order: number }> = {
+  occurred:  { label: '発生記録',   color: 'bg-red-100 text-red-700',    order: 1 },
+  cause:     { label: '原因分析',   color: 'bg-orange-100 text-orange-700', order: 2 },
+  action:    { label: '対策決定',   color: 'bg-yellow-100 text-yellow-700', order: 3 },
+  shared:    { label: '職員共有済', color: 'bg-blue-100 text-blue-700',   order: 4 },
+  recheck:   { label: '再確認済',   color: 'bg-green-100 text-green-700', order: 5 },
+}
+
+// ==============================
 // UI補助
 // ==============================
 export interface NavItem {
